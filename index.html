@@ -1,189 +1,876 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-    <!-- bootstrap icon -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
-    <!-- css -->
-    <link rel="stylesheet" href="style.css" />
-    <title>Railan Zalali | Web App</title>
-  </head>
-  <body id="home">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">Railan Zalali</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#home">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#projects">Projects</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">Contact</a>
-            </li>
-          </ul>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Mind-Blowing Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+        
+        :root {
+            --primary: #00f0ff;
+            --secondary: #ff00e4;
+            --dark: #0f172a;
+            --light: #f8fafc;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .glass-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 240, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
+        }
+        
+        .glow {
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+        }
+        
+        .hover-grow {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-grow:hover {
+            transform: scale(1.05);
+        }
+        
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 1.5s ease-out;
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .grid-pattern {
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid var(--primary);
+            white-space: nowrap;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary) }
+        }
+        
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float-up linear infinite;
+        }
+        
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+            filter: drop-shadow(0 5px 10px rgba(0, 240, 255, 0.5));
+        }
+        
+        .project-card {
+            perspective: 1000px;
+        }
+        
+        .project-inner {
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        
+        .project-card:hover .project-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .project-front, .project-back {
+            backface-visibility: hidden;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .project-back {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="relative overflow-x-hidden">
+    <!-- Floating Particles Background -->
+    <div id="particles" class="particles"></div>
+    
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] opacity-90"></div>
+        
+        <div class="container mx-auto px-6 z-10">
+            <div class="flex flex-col lg:flex-row items-center justify-between">
+                <div class="lg:w-1/2 mb-12 lg:mb-0">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                        <span class="gradient-text">Hi, I'm</span>
+                        <span class="typewriter block">[Your Name]</span>
+                    </h1>
+                    <h2 class="text-3xl md:text-4xl font-semibold mb-6">
+                        <span class="gradient-text">Creative</span> 
+                        <span id="dynamic-text" class="inline-block ml-2">Developer</span>
+                    </h2>
+                    <p class="text-lg md:text-xl mb-8 opacity-90 max-w-lg">
+                        I craft digital experiences that blend innovation with aesthetics. 
+                        Passionate about pushing boundaries and creating mind-blowing designs.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="px-8 py-3 gradient-bg rounded-full text-white font-medium hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 transform hover:scale-105">
+                            Contact Me
+                        </a>
+                        <a href="#work" class="px-8 py-3 border-2 border-cyan-400 rounded-full text-cyan-400 font-medium hover:bg-cyan-400/10 transition-all duration-300 transform hover:scale-105">
+                            View Work
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2 flex justify-center relative">
+                    <div class="relative floating">
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full gradient-bg absolute -top-4 -left-4 opacity-20 blur-xl"></div>
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full glass-card border border-cyan-400/30 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" 
+                                 alt="Profile Photo" 
+                                 class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6">
+                                <div>
+                                    <div class="flex space-x-2 mb-2">
+                                        <span class="w-3 h-3 rounded-full bg-green-400 pulse"></span>
+                                        <span class="text-sm">Available for work</span>
+                                    </div>
+                                    <div class="flex space-x-4">
+                                        <a href="#" class="social-icon text-white text-xl hover:text-cyan-400">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                        <a href="#" class="social-icon text-white text-xl hover:text-sky-500">
+                                            <i class="fab fa-linkedin"></i>
+                                        </a>
+                                        <a href="#" class="social-icon text-white text-xl hover:text-pink-500">
+                                            <i class="fab fa-dribbble"></i>
+                                        </a>
+                                        <a href="#" class="social-icon text-white text-xl hover:text-blue-400">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </nav>
-
-    <!-- jumbotron -->
-    <section class="jumbotron text-center">
-      <img src="img/railan.jpg" alt="Railan" width="200" class="rounded-circle img-thumbnail" />
-      <h1 class="display-4">Railan Zalali</h1>
-      <p class="lead">Student | Web Developer.</p>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path
-          fill="#ffffff"
-          fill-opacity="1"
-          d="M0,128L40,122.7C80,117,160,107,240,133.3C320,160,400,224,480,229.3C560,235,640,181,720,149.3C800,117,880,107,960,138.7C1040,171,1120,245,1200,250.7C1280,256,1360,192,1400,160L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
-        ></path>
-      </svg>
+        
+        <div class="scroll-down">
+            <a href="#about" class="text-white text-2xl animate-bounce">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
     </section>
-    <!-- end jumbotron -->
-
-    <!-- About -->
-    <section id="about">
-      <div class="container">
-        <div class="row text-center mb-3">
-          <div class="col">
-            <h2>About Me</h2>
-          </div>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 relative grid-pattern">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0f172a]/90 via-[#0f172a]/80 to-[#0f172a]/90"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    <span class="gradient-text">About</span> Me
+                </h2>
+                <div class="w-24 h-1 gradient-bg mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/3 mb-12 lg:mb-0 flex justify-center">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-pink-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-200"></div>
+                        <div class="relative glass-card rounded-2xl p-1">
+                            <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" 
+                                 alt="About Me" 
+                                 class="rounded-xl w-full max-w-xs">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-2/3 lg:pl-12">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-6 glow">
+                        Who am I?
+                    </h3>
+                    <p class="text-lg mb-6 opacity-90">
+                        I'm a passionate creative professional with over 5 years of experience in designing and developing digital experiences. 
+                        My journey began when I was just 15 years old, tinkering with code and design tools to bring my ideas to life.
+                    </p>
+                    <p class="text-lg mb-8 opacity-90">
+                        Today, I specialize in creating immersive web experiences that combine cutting-edge technology with stunning visual design. 
+                        I believe in the power of design to transform ideas into impactful realities.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="glass-card p-6 rounded-xl hover-grow">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 gradient-bg rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-lightbulb text-white"></i>
+                                </div>
+                                <h4 class="text-xl font-bold">Innovative</h4>
+                            </div>
+                            <p class="opacity-90">
+                                Constantly exploring new technologies and design trends to create fresh, innovative solutions.
+                            </p>
+                        </div>
+                        
+                        <div class="glass-card p-6 rounded-xl hover-grow">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 gradient-bg rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-bolt text-white"></i>
+                                </div>
+                                <h4 class="text-xl font-bold">Fast Learner</h4>
+                            </div>
+                            <p class="opacity-90">
+                                Quick to adapt and master new tools, frameworks, and design methodologies.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row justify-content-center fs-5 text-center">
-          <div class="col-md-4">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus ex consequuntur voluptatem vitae, excepturi corporis quos a tempore soluta. A?</p>
-          </div>
-          <div class="col-md-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem corrupti voluptates esse ut suscipit consequuntur iste! Omnis labore dolores, saepe minus accusamus assumenda ex doloribus!</div>
-        </div>
-      </div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path
-          fill="#acccff"
-          fill-opacity="1"
-          d="M0,96L40,101.3C80,107,160,117,240,144C320,171,400,213,480,192C560,171,640,85,720,85.3C800,85,880,171,960,181.3C1040,192,1120,128,1200,90.7C1280,53,1360,43,1400,37.3L1440,32L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
-        ></path>
-      </svg>
     </section>
-    <!-- about -->
-
-    <!-- Projects -->
-    <section id="projects">
-      <div class="container">
-        <div class="row text-center mb-3">
-          <div class="col">
-            <h2>My Projects</h2>
-          </div>
+    
+    <!-- Skills Section -->
+    <section class="py-20 bg-gradient-to-b from-[#0f172a] to-[#1e293b]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    My <span class="gradient-text">Skills</span>
+                </h2>
+                <div class="w-24 h-1 gradient-bg mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 glow">Design Skills</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">UI/UX Design</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Graphic Design</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Motion Design</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Branding</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 glow">Development Skills</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">HTML/CSS</span>
+                                <span>98%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 98%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">JavaScript</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">React</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Node.js</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="glass-card p-6 rounded-xl text-center hover-grow">
+                    <div class="text-4xl gradient-text mb-3">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h4 class="font-bold mb-2">Clean Code</h4>
+                    <p class="text-sm opacity-90">Well-structured and maintainable</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl text-center hover-grow">
+                    <div class="text-4xl gradient-text mb-3">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4 class="font-bold mb-2">Responsive</h4>
+                    <p class="text-sm opacity-90">Perfect on any device</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl text-center hover-grow">
+                    <div class="text-4xl gradient-text mb-3">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h4 class="font-bold mb-2">Fast</h4>
+                    <p class="text-sm opacity-90">Optimized performance</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl text-center hover-grow">
+                    <div class="text-4xl gradient-text mb-3">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4 class="font-bold mb-2">SEO Friendly</h4>
+                    <p class="text-sm opacity-90">Better search rankings</p>
+                </div>
+            </div>
         </div>
-        <div class="row justify-content-center">
-          <div class="col-md-4 mb-3">
-            <div class="card">
-              <img src="img/projects/1.jpg" class="card-img-top" alt="Projects 1" />
-              <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <div class="card">
-              <img src="img/projects/2.jpg" class="card-img-top" alt="Projects 1" />
-              <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <div class="card">
-              <img src="img/projects/3.jpg" class="card-img-top" alt="Projects 1" />
-              <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <div class="card">
-              <img src="img/projects/4.jpg" class="card-img-top" alt="Projects 1" />
-              <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-5">
-            <div class="card">
-              <img src="img/projects/5.jpg" class="card-img-top" alt="Projects 1" />
-              <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path
-          fill="#fff"
-          fill-opacity="1"
-          d="M0,224L40,208C80,192,160,160,240,154.7C320,149,400,171,480,186.7C560,203,640,213,720,197.3C800,181,880,139,960,128C1040,117,1120,139,1200,149.3C1280,160,1360,160,1400,160L1440,160L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
-        ></path>
-      </svg>
     </section>
-    <!-- end Projects -->
-
-    <!-- Contact -->
-    <section id="contact">
-      <div class="container">
-        <div class="row text-center mb-3">
-          <div class="col">
-            <h2>Contact Me</h2>
-          </div>
+    
+    <!-- Work/Projects Section -->
+    <section id="work" class="py-20 parallax" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80')">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0f172a]/90 via-[#0f172a]/80 to-[#0f172a]/90"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    My <span class="gradient-text">Work</span>
+                </h2>
+                <div class="w-24 h-1 gradient-bg mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card h-80">
+                    <div class="project-inner relative w-full h-full">
+                        <div class="project-front glass-card rounded-xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Project 1" 
+                                 class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6">
+                                <div>
+                                    <h3 class="text-xl font-bold mb-1">E-commerce Platform</h3>
+                                    <p class="text-sm opacity-90">UI/UX Design & Development</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-back glass-card rounded-xl p-6 flex flex-col justify-center">
+                            <h3 class="text-xl font-bold mb-3">E-commerce Platform</h3>
+                            <p class="mb-4 opacity-90">A complete online shopping solution with advanced filtering, cart system, and payment integration.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs px-3 py-1 bg-cyan-400/10 text-cyan-400 rounded-full">React</span>
+                                <span class="text-xs px-3 py-1 bg-pink-400/10 text-pink-400 rounded-full">Node.js</span>
+                                <span class="text-xs px-3 py-1 bg-purple-400/10 text-purple-400 rounded-full">MongoDB</span>
+                            </div>
+                            <a href="#" class="text-cyan-400 font-medium inline-flex items-center">
+                                View Project <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card h-80">
+                    <div class="project-inner relative w-full h-full">
+                        <div class="project-front glass-card rounded-xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
+                                 alt="Project 2" 
+                                 class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6">
+                                <div>
+                                    <h3 class="text-xl font-bold mb-1">Mobile App Design</h3>
+                                    <p class="text-sm opacity-90">UI/UX & Prototyping</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-back glass-card rounded-xl p-6 flex flex-col justify-center">
+                            <h3 class="text-xl font-bold mb-3">Mobile App Design</h3>
+                            <p class="mb-4 opacity-90">A fitness tracking app with personalized workout plans, nutrition tracking, and social features.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs px-3 py-1 bg-cyan-400/10 text-cyan-400 rounded-full">Figma</span>
+                                <span class="text-xs px-3 py-1 bg-pink-400/10 text-pink-400 rounded-full">Adobe XD</span>
+                                <span class="text-xs px-3 py-1 bg-purple-400/10 text-purple-400 rounded-full">After Effects</span>
+                            </div>
+                            <a href="#" class="text-cyan-400 font-medium inline-flex items-center">
+                                View Project <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card h-80">
+                    <div class="project-inner relative w-full h-full">
+                        <div class="project-front glass-card rounded-xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1636&q=80" 
+                                 alt="Project 3" 
+                                 class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6">
+                                <div>
+                                    <h3 class="text-xl font-bold mb-1">Brand Identity</h3>
+                                    <p class="text-sm opacity-90">Logo & Visual Identity</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-back glass-card rounded-xl p-6 flex flex-col justify-center">
+                            <h3 class="text-xl font-bold mb-3">Brand Identity</h3>
+                            <p class="mb-4 opacity-90">Complete brand identity for a tech startup including logo, color palette, typography, and brand guidelines.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs px-3 py-1 bg-cyan-400/10 text-cyan-400 rounded-full">Illustrator</span>
+                                <span class="text-xs px-3 py-1 bg-pink-400/10 text-pink-400 rounded-full">Photoshop</span>
+                                <span class="text-xs px-3 py-1 bg-purple-400/10 text-purple-400 rounded-full">InDesign</span>
+                            </div>
+                            <a href="#" class="text-cyan-400 font-medium inline-flex items-center">
+                                View Project <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16">
+                <a href="#" class="inline-flex items-center px-8 py-3 border-2 border-cyan-400 rounded-full text-cyan-400 font-medium hover:bg-cyan-400/10 transition-all duration-300 transform hover:scale-105">
+                    View All Projects <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
         </div>
-        <div class="row justify-content-center">
-          <div class="col-md-6">
-            <form>
-              <div class="mb-3">
-                <label for="name" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" id="name" aria-describedby="name" />
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" aria-describedby="email" />
-              </div>
-              <div class="mb-3">
-                <label for="pesan" class="form-label">Example textarea</label>
-                <textarea class="form-control" id="pesan" rows="3"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">Kirim</button>
-            </form>
-          </div>
-        </div>
-      </div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path
-          fill="#0d6efd"
-          fill-opacity="1"
-          d="M0,96L40,112C80,128,160,160,240,170.7C320,181,400,171,480,181.3C560,192,640,224,720,224C800,224,880,192,960,181.3C1040,171,1120,181,1200,165.3C1280,149,1360,107,1400,85.3L1440,64L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
-        ></path>
-      </svg>
     </section>
-    <!-- end Contact -->
-
+    
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gradient-to-b from-[#1e293b] to-[#0f172a]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    <span class="gradient-text">Testimonials</span>
+                </h2>
+                <div class="w-24 h-1 gradient-bg mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-xl hover-grow">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/43.jpg" 
+                             alt="Client" 
+                             class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Sarah Johnson</h4>
+                            <p class="text-sm opacity-80">CEO, TechCorp</p>
+                        </div>
+                    </div>
+                    <p class="mb-6 italic opacity-90">
+                        "Working with [Your Name] was an absolute pleasure. Their attention to detail and creative approach resulted in a website that perfectly represents our brand."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="glass-card p-8 rounded-xl hover-grow">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" 
+                             alt="Client" 
+                             class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Michael Chen</h4>
+                            <p class="text-sm opacity-80">Marketing Director, BrandUp</p>
+                        </div>
+                    </div>
+                    <p class="mb-6 italic opacity-90">
+                        "The mobile app design exceeded our expectations. [Your Name] understood our vision and brought it to life with innovative solutions and stunning visuals."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="glass-card p-8 rounded-xl hover-grow">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" 
+                             alt="Client" 
+                             class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Emily Rodriguez</h4>
+                            <p class="text-sm opacity-80">Founder, StartupX</p>
+                        </div>
+                    </div>
+                    <p class="mb-6 italic opacity-90">
+                        "From branding to web development, [Your Name] delivered exceptional work at every stage. Their technical skills are matched only by their creative vision."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative grid-pattern">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0f172a]/90 via-[#0f172a]/80 to-[#0f172a]/90"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Get In <span class="gradient-text">Touch</span>
+                </h2>
+                <div class="w-24 h-1 gradient-bg mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                    <h3 class="text-2xl font-bold mb-6 glow">Let's talk about your project</h3>
+                    <p class="text-lg mb-8 opacity-90">
+                        Have a project in mind or want to discuss potential collaboration? 
+                        I'd love to hear from you! Fill out the form or contact me directly.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Email Me</h4>
+                                <a href="mailto:hello@example.com" class="text-cyan-400 hover:underline">hello@example.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-phone-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Call Me</h4>
+                                <a href="tel:+1234567890" class="text-cyan-400 hover:underline">+1 (234) 567-890</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Location</h4>
+                                <p class="opacity-90">San Francisco, CA</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10">
+                        <h4 class="font-bold mb-4">Follow Me</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="social-icon w-10 h-10 gradient-bg rounded-full flex items-center justify-center text-white hover:shadow-lg hover:shadow-cyan-500/30">
+                                <i class="fab fa-dribbble"></i>
+                            </a>
+                            <a href="#" class="social-icon w-10 h-10 gradient-bg rounded-full flex items-center justify-center text-white hover:shadow-lg hover:shadow-sky-500/30">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-icon w-10 h-10 gradient-bg rounded-full flex items-center justify-center text-white hover:shadow-lg hover:shadow-purple-500/30">
+                                <i class="fab fa-behance"></i>
+                            </a>
+                            <a href="#" class="social-icon w-10 h-10 gradient-bg rounded-full flex items-center justify-center text-white hover:shadow-lg hover:shadow-pink-500/30">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <form class="glass-card p-8 rounded-xl">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block mb-2 font-medium">Your Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 bg-[#1e293b]/50 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label for="email" class="block mb-2 font-medium">Your Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 bg-[#1e293b]/50 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent" placeholder="john@example.com">
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label for="subject" class="block mb-2 font-medium">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 bg-[#1e293b]/50 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent" placeholder="Project Inquiry">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block mb-2 font-medium">Your Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 bg-[#1e293b]/50 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent" placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full gradient-bg text-white font-medium py-3 px-6 rounded-lg hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 transform hover:scale-[1.02]">
+                            Send Message <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Footer -->
-    <footer class="bg-primary text-white text-center pb-5">
-      <p>Created With <i class="bi bi-heart-fill text-danger"></i> By <a href="https://www.instagram.com/railan_zll56/" class="text-white fw-bold"> Railan Zalali</a></p>
+    <footer class="py-12 bg-[#0f172a] border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-6 md:mb-0">
+                    <div class="w-8 h-8 rounded-full gradient-bg flex items-center justify-center text-white font-bold mr-3">A</div>
+                    <span class="text-xl font-bold">[Your Name]</span>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="opacity-80 mb-2">© 2023 All Rights Reserved</p>
+                    <p class="text-sm opacity-60">Designed & Developed with ❤️ by [Your Name]</p>
+                </div>
+            </div>
+        </div>
     </footer>
-    <!-- end Footer -->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  </body>
+    
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 2px and 6px
+                const size = Math.random() * 4 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                
+                // Random animation duration between 10s and 20s
+                const duration = Math.random() * 10 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Random delay
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Dynamic text animation
+        function animateText() {
+            const texts = ["Developer", "Designer", "Creator", "Innovator"];
+            let currentIndex = 0;
+            const element = document.getElementById('dynamic-text');
+            
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % texts.length;
+                element.textContent = texts[currentIndex];
+                
+                // Add animation class
+                element.classList.add('animate-pulse');
+                
+                // Remove animation class after duration
+                setTimeout(() => {
+                    element.classList.remove('animate-pulse');
+                }, 1000);
+            }, 2000);
+        }
+        
+        // Animate skill bars on scroll
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const width = entry.target.getAttribute('style').match(/\d+/)[0];
+                        entry.target.style.width = `${width}%`;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            skillBars.forEach(bar => {
+                bar.style.width = '0%';
+                observer.observe(bar);
+            });
+        }
+        
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            animateText();
+            animateSkillBars();
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
 </html>
